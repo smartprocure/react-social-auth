@@ -7,6 +7,9 @@ Simple client side social authentication for [React](https://reactjs.org/) appli
 This package requires `lodash/fp`, so make sure that's available in your app.
 
 # Usage
+
+Client Side Code:
+
 ```
 import React from 'react';
 import {Button} from 'reactstrap'
@@ -38,9 +41,9 @@ let LinkedInButton = ({ onClick }) => (
 )
 
 let onSignIn = (authPayload) => {  
-  // Use the authentication payload to verify the identity of the request server side.
-  // For Google: https://developers.google.com/identity/sign-in/web/backend-auth
-  // For LinkedIn: https://developer.linkedin.com/docs/oauth2 (Step 2)
+  // Use the authentication payload to verify 
+  // the identity of the request using server
+  // side authentication procedures.
   console.log(authPayload)
 }
 
@@ -59,3 +62,7 @@ export default () => (
   </Flex>
 )
 ```
+Server side authentication procedures:
+
+- [Google](https://developers.google.com/identity/sign-in/web/backend-auth)
+- [LinkedIn](https://developer.linkedin.com/docs/oauth2) (Step 2)
