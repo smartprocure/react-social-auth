@@ -42,7 +42,7 @@ export default class GoogleAuth extends React.Component {
             gapi.auth2.init({
               client_id: appId,
               fetch_basic_profile: fetchBasicProfile,
-              scope: scope,
+              scope,
             })
           }
         })
@@ -53,9 +53,11 @@ export default class GoogleAuth extends React.Component {
   clickHandler() {
     let gapi = window.gapi
     let auth2 = gapi.auth2.getAuthInstance()
-    auth2.signIn().then(user =>
-      this.props.onSuccess(getAuthPayload(this.props.appId, user))
-    )
+    auth2
+      .signIn()
+      .then(user =>
+        this.props.onSuccess(getAuthPayload(this.props.appId, user))
+      )
   }
 
   render() {

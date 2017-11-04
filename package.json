@@ -7,7 +7,7 @@
     "build": "webpack",
     "test": "babel-node ./node_modules/mocha/bin/_mocha",
     "fmt": "prettier --write *.js; prettier --write '{src,test}/**/*.js'",
-    "lint": "eslint dangerfile.js src/*.js test/*.js"
+    "lint": "eslint --fix dangerfile.js src/*.js test/*.js"
   },
   "babel": {
     "presets": [
