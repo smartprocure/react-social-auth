@@ -4,7 +4,7 @@ import { getQueryParameter } from './common'
 let loadAuthorizationUrl = ({ appId, state, scope }) => {
   let current = encodeURIComponent(window.location.href)
   let base = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&'
-  return `${base}client_id=${appId}&redirect_uri=${current}&state=${state}${encodeURIComponent(scope)}`
+  return `${base}client_id=${appId}&redirect_uri=${current}&state=${state}&scope=${encodeURIComponent(scope)}`
 }
 
 let resetUrl = () => {
