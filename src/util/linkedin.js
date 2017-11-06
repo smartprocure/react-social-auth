@@ -61,7 +61,6 @@ export let getAuthPayload = ({ appId }) => {
         grant_type: 'authorization_code',
         code: authenticationCode,
         client_id: appId,
-        client_secret: state,
         redirect_uri: window.location.href,
       },
     }
