@@ -1,3 +1,4 @@
+import _ from 'lodash/fp'
 import React from 'react'
 import { loadScript, hasRequiredSettings } from './util/common'
 
@@ -40,7 +41,7 @@ export default class GoogleAuth extends React.Component {
         gapi.load('auth2', () => {
           if (!gapi.auth2.getAuthInstance()) {
             gapi.auth2.init({
-              client_id: appId,
+              client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
               fetch_basic_profile: fetchBasicProfile,
               scope,
             })
