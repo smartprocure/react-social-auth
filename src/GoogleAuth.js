@@ -26,39 +26,29 @@ export default class GoogleAuth extends React.Component {
     hasRequiredSettings(this.props)
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let {
       appId,
       scope = 'profile email',
       fetchBasicProfile = true,
     } = this.props
 
-    loadScript(
-      'google-platform',
-      'https://apis.google.com/js/platform.js',
-      () => {
-        let gapi = window.gapi
-        gapi.load('auth2', () => {
-          if (!gapi.auth2.getAuthInstance()) {
-            gapi.auth2.init({
-              client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
-              fetch_basic_profile: fetchBasicProfile,
-              scope,
-            })
-          }
-        })
-      }
-    )
+    await loadScript('google-platform','https://apis.google.com/js/platform.js')
+    window.gapi.load('auth2', () => {
+        if (!gapi.auth2.getAuthInstance()) {
+          gapi.auth2.init({
+            client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
+            fetch_basic_profile: fetchBasicProfile,
+            scope,
+          })
+        }
+      })    
   }
 
-  clickHandler() {
-    let gapi = window.gapi
-    let auth2 = gapi.auth2.getAuthInstance()
-    auth2
-      .signIn()
-      .then(user =>
-        this.props.onSuccess(getAuthPayload(this.props.appId, user))
-      )
+  async clickHandler() {
+    let auth2 = window.gapi.auth2.getAuthInstance()
+    await auth2.signIn()
+    this.props.onSuccess(getAuthPayload(this.props.appId, user))
   }
 
   render() {

@@ -1,16 +1,16 @@
 import _ from 'lodash/fp'
 import * as F from 'futil-js'
 
-export let loadScript = (id, src, onload) => {
+export let loadScript = (id, src) => new Promise((resolve, reject) => {
   if (typeof document !== 'undefined') {
     if (!document.getElementById(id)) {
       let siblingElement = _.head(document.getElementsByTagName('script'))
       let scriptElement = document.createElement('script')
-      F.extendOn(scriptElement, { id, src, onload, async: true })
+      F.extendOn(scriptElement, { id, src, resolve, async: true })
       siblingElement.parentNode.insertBefore(scriptElement, siblingElement)
     }
   }
-}
+})
 
 let hasProperties = _.curry((properties, instance) =>
   _.every(property => {
