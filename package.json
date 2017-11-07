@@ -57,6 +57,7 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
+    "bluebird": "^3.5.1",
     "futil-js": "^1.36.0",
     "lodash": "^4.17.4",
     "react": "^16.0.0",
