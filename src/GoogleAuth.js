@@ -27,7 +27,7 @@ export default class GoogleAuth extends React.Component {
     hasRequiredSettings(this.props)
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     let {
       appId,
       scope = 'profile email',
@@ -48,12 +48,10 @@ export default class GoogleAuth extends React.Component {
     })
   }
 
-  clickHandler() {
+  async clickHandler() {
     let auth2 = window.gapi.auth2.getAuthInstance()
-    auth2.signIn()
-      .then(user =>
-        this.props.onSuccess(getAuthPayload(this.props.appId, user))
-      )
+    let user = await auth2.signIn()
+    this.props.onSuccess(getAuthPayload(this.props.appId, user))
   }
 
   render() {
