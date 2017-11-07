@@ -34,7 +34,10 @@ export default class GoogleAuth extends React.Component {
       fetchBasicProfile = true,
     } = this.props
 
-    await loadScript('google-platform', 'https://apis.google.com/js/platform.js')
+    await loadScript(
+      'google-platform',
+      'https://apis.google.com/js/platform.js'
+    )
     let load = bluebird.promisify(window.gapi.load)
     await load('auth2')
     if (!window.gapi.auth2.getAuthInstance()) {

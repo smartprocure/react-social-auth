@@ -16,7 +16,7 @@ export default class LinkedInAuth extends React.Component {
   }
 
   clickHandler() {
-    let { appId, scope = 'r_basicprofile r_emailaddress'} = this.props
+    let { appId, scope = 'r_basicprofile r_emailaddress' } = this.props
     requestAuthenticationCode({ appId, scope })
   }
 

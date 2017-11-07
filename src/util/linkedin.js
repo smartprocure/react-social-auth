@@ -4,8 +4,11 @@ import generateState from 'simple-random/browser'
 
 let loadAuthorizationUrl = ({ appId, state, scope }) => {
   let current = encodeURIComponent(window.location.href)
-  let base = 'https://www.linkedin.com/oauth/v2/authorization?response_type=code&'
-  return `${base}client_id=${appId}&redirect_uri=${current}&state=${state}&scope=${encodeURIComponent(scope)}`
+  let base =
+    'https://www.linkedin.com/oauth/v2/authorization?response_type=code&'
+  return `${base}client_id=${appId}&redirect_uri=${current}&state=${state}&scope=${encodeURIComponent(
+    scope
+  )}`
 }
 
 let resetUrl = () => {
@@ -44,7 +47,7 @@ let getAuthenticationCode = () => {
 }
 
 export let requestAuthenticationCode = ({ appId, scope }) => {
-  let state = generateState({length: 8})
+  let state = generateState({ length: 8 })
   localStorage.linkedInReactLogin = state
   localStorage.linkedInReactLoginRedirectUri = window.location.href
   window.location.href = loadAuthorizationUrl({ appId, state, scope })
