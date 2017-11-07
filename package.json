@@ -1,6 +1,6 @@
 {
   "name": "react-social-auth",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Simple client side social authentication for React applications.",
   "main": "lib/react-social-auth.js",
   "scripts": {
@@ -58,6 +58,7 @@
   "dependencies": {
     "futil-js": "^1.36.0",
     "lodash": "^4.17.4",
-    "react": "^16.0.0"
+    "react": "^16.0.0",
+    "simple-random": "^1.0.3"
   }
 }

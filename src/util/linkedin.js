@@ -1,5 +1,6 @@
 import _ from 'lodash/fp'
 import { getQueryParameter } from './common'
+import generateState from 'simple-random/browser'
 
 let loadAuthorizationUrl = ({ appId, state, scope }) => {
   let current = encodeURIComponent(window.location.href)
@@ -43,9 +44,7 @@ let getAuthenticationCode = () => {
 }
 
 export let requestAuthenticationCode = ({ appId, scope }) => {
-  let state = Math.random()
-    .toString(36)
-    .substring(7)
+  let state = generateState({length: 8})
   localStorage.linkedInReactLogin = state
   localStorage.linkedInReactLoginRedirectUri = window.location.href
   window.location.href = loadAuthorizationUrl({ appId, state, scope })
