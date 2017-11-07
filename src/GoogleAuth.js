@@ -35,7 +35,7 @@ export default class GoogleAuth extends React.Component {
 
     loadScript('google-platform', 'https://apis.google.com/js/platform.js')
     .then(() => window.gapi.load('auth2'))
-    .then(() => {
+    .then((x) => {
       if (!window.gapi.auth2.getAuthInstance()) {
         window.gapi.auth2.init({
           client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
