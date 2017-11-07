@@ -1,7 +1,6 @@
 import _ from 'lodash/fp'
 import React from 'react'
 import { loadScript, hasRequiredSettings } from './util/common'
-import bluebird from 'bluebird'
 
 let getAuthPayload = (appId, user) => {
   let profile = user.getBasicProfile()
@@ -27,32 +26,32 @@ export default class GoogleAuth extends React.Component {
     hasRequiredSettings(this.props)
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     let {
       appId,
       scope = 'profile email',
       fetchBasicProfile = true,
     } = this.props
 
-    await loadScript('google-platform','https://apis.google.com/js/platform.js')
-    let gapiLoad = bluebird.promisify(window.gapi.load, {
-      context: window.gapi,
-    })
-    await gapiLoad('auth2')
-    let auth2Init = bluebird.promisify(window.gapi.auth2.init, {
-      context: window.gapi.auth2,
-    })    
-    await auth2Init({
-      client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
-      fetch_basic_profile: fetchBasicProfile,
-      scope,
+    loadScript('google-platform', 'https://apis.google.com/js/platform.js')
+    .then(window.gapi.load('auth2'))
+    .then(() => {
+      if (!window.gapi.auth2.getAuthInstance()) {
+        window.gapi.auth2.init({
+          client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
+          fetch_basic_profile: fetchBasicProfile,
+          scope,
+        })
+      }
     })
   }
 
-  async clickHandler() {
+  clickHandler() {
     let auth2 = window.gapi.auth2.getAuthInstance()
-    await auth2.signIn()
-    this.props.onSuccess(getAuthPayload(this.props.appId, user))
+    auth2.signIn()
+    .then(user =>
+      this.props.onSuccess(getAuthPayload(this.props.appId, user))
+    )
   }
 
   render() {
