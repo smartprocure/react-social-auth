@@ -1,6 +1,6 @@
 {
   "name": "react-social-auth",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Simple client side social authentication for React applications.",
   "main": "lib/react-social-auth.js",
   "scripts": {
