@@ -34,18 +34,16 @@ export default class GoogleAuth extends React.Component {
       fetchBasicProfile = true,
     } = this.props
 
-    loadScript('google-platform', 'https://apis.google.com/js/platform.js').then(() => {
-      let load = bluebird.promisify(window.gapi.load)
-      return load('auth2')
-    }).then(() => {
-      if (!window.gapi.auth2.getAuthInstance()) {
-        window.gapi.auth2.init({
-          client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
-          fetch_basic_profile: fetchBasicProfile,
-          scope,
-        })
-      }
-    })
+    await loadScript('google-platform', 'https://apis.google.com/js/platform.js')
+    let load = bluebird.promisify(window.gapi.load)
+    await load('auth2')
+    if (!window.gapi.auth2.getAuthInstance()) {
+      window.gapi.auth2.init({
+        client_id: _.trimEnd(appId, '.apps.googleusercontent.com'),
+        fetch_basic_profile: fetchBasicProfile,
+        scope,
+      })
+    }
   }
 
   async clickHandler() {
