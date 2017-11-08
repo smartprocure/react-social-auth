@@ -1,10 +1,10 @@
 {
   "name": "react-social-auth",
-  "version": "1.0.34",
+  "version": "1.0.35",
   "description": "Simple client side social authentication for React applications.",
   "main": "lib/react-social-auth.js",
   "scripts": {
-    "build": "webpack",
+    "build": "webpack -d",
     "test": "babel-node ./node_modules/mocha/bin/_mocha",
     "fmt": "prettier --write *.js; prettier --write '{src,test}/**/*.js'",
     "lint": "eslint --fix dangerfile.js src/*.js test/*.js"

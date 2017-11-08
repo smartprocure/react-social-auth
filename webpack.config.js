@@ -3,7 +3,7 @@ var libraryName = require('./package.json').name
 var outputFile = libraryName + '.js'
 
 module.exports = {
-  devtool: 'source-map',
+  devtool: 'eval-source-map',
   entry: ['babel-polyfill', path.join(__dirname, 'src/index.js')],
   output: {
     path: path.join(__dirname, 'lib'),
