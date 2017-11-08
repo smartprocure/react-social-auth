@@ -20,7 +20,7 @@ let hasProperties = _.curry((properties, instance) =>
 )
 
 export let hasRequiredSettings = instance => {
-  let requiredSettings = ['appId', 'onSuccess', 'component']
+  let requiredSettings = ['provider', 'appId', 'onSuccess', 'component']
   if (!hasProperties(requiredSettings, instance)) {
     throw `[Social Authentication] - A valid value for the following setting is required ${requiredSettings.join(
       ', '

@@ -46,14 +46,14 @@ let getAuthenticationCode = () => {
   }
 }
 
-export let requestAuthenticationCode = ({ appId, scope }) => {
+let requestAuthenticationCode = ({ appId, scope }) => {
   let state = generateState({ length: 8 })
   localStorage.linkedInReactLogin = state
   localStorage.linkedInReactLoginRedirectUri = window.location.href
   window.location.href = loadAuthorizationUrl({ appId, state, scope })
 }
 
-export let getAuthPayload = ({ appId }) => {
+let getAuthPayload = ({ appId }) => {
   let result = getAuthenticationCode()
   if (result) {
     let { authenticationCode, state } = result
@@ -69,4 +69,15 @@ export let getAuthPayload = ({ appId }) => {
   } else {
     return
   }
+}
+
+export let onMount = (props) => {
+  let authPayload = getAuthPayload(props)
+  if (authPayload) {
+    props.onSuccess(authPayload)
+  }
+} 
+
+export let onClick = ({ appId, scope = 'r_basicprofile r_emailaddress' }) => {
+  requestAuthenticationCode({ appId, scope })
 }
