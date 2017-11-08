@@ -53,7 +53,7 @@ let requestAuthenticationCode = ({ appId, scope }) => {
   window.location.href = loadAuthorizationUrl({ appId, state, scope })
 }
 
-let getAuthPayload = ({ appId }) => {
+let getAuthPayload = (appId) => {
   let result = getAuthenticationCode()
   if (result) {
     let { authenticationCode, state } = result
@@ -66,15 +66,13 @@ let getAuthPayload = ({ appId }) => {
         redirect_uri: window.location.href,
       },
     }
-  } else {
-    return
   }
 }
 
-export let onMount = (props) => {
-  let authPayload = getAuthPayload(props)
+export let onMount = ({appId, onSuccess}) => {
+  let authPayload = getAuthPayload(appId)
   if (authPayload) {
-    props.onSuccess(authPayload)
+    onSuccess(authPayload)
   }
 } 
 
