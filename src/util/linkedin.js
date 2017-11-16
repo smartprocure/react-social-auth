@@ -2,8 +2,8 @@ import _ from 'lodash/fp'
 import { getQueryParameter } from './common'
 import generateState from 'simple-random/browser'
 
-let loadAuthorizationUrl = ({ appId, state, scope }) => {
-  let current = encodeURIComponent(window.location.href)
+let loadAuthorizationUrl = ({ appId, state, scope, redirectUri }) => {
+  let current = encodeURIComponent(redirectUri)
   let base =
     'https://www.linkedin.com/oauth/v2/authorization?response_type=code&'
   return `${base}client_id=${appId}&redirect_uri=${current}&state=${state}&scope=${encodeURIComponent(
@@ -42,28 +42,28 @@ let getAuthenticationCode = () => {
     state = getQueryParameter('state')
     let authenticationCode = getQueryParameter('code')
     resetUrl()
-    return { authenticationCode, state }
+    return { authenticationCode, state, redirectUri }
   }
 }
 
-let requestAuthenticationCode = ({ appId, scope }) => {
+let requestAuthenticationCode = ({ appId, scope, redirectUri }) => {
   let state = generateState({ length: 8 })
   localStorage.linkedInReactLogin = state
-  localStorage.linkedInReactLoginRedirectUri = window.location.href
-  window.location.href = loadAuthorizationUrl({ appId, state, scope })
+  localStorage.linkedInReactLoginRedirectUri = redirectUri
+  window.location.href = loadAuthorizationUrl({ appId, state, scope, redirectUri })
 }
 
 let getAuthPayload = (appId) => {
   let result = getAuthenticationCode()
   if (result) {
-    let { authenticationCode, state } = result
+    let { authenticationCode, state, redirectUri } = result
     return {
       type: 'linkedin',
       authResponse: {
         grant_type: 'authorization_code',
         code: authenticationCode,
         client_id: appId,
-        redirect_uri: window.location.href,
+        redirect_uri: redirectUri,
       },
     }
   }
@@ -76,6 +76,6 @@ export let onMount = ({appId, onSuccess}) => {
   }
 } 
 
-export let onClick = ({ appId, scope = 'r_basicprofile r_emailaddress' }) => {
-  requestAuthenticationCode({ appId, scope })
+export let onClick = ({ appId, scope = 'r_basicprofile r_emailaddress', redirectUri = window.location.href }) => {
+  requestAuthenticationCode({ appId, scope, redirectUri })
 }
