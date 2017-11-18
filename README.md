@@ -5,6 +5,7 @@ Simple client side social authentication for [React](https://reactjs.org/) appli
 `npm install react-social-auth`
 
 This package requires `lodash/fp`, and `babel-polyfill` so make sure that's available in your app.
+Follow this instructions to enable [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
 
 # Usage
 
