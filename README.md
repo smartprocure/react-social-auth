@@ -1,11 +1,17 @@
 # react-social-auth
+
+[![npm version](https://badge.fury.io/js/react-social-auth.svg)](https://badge.fury.io/js/react-social-auth)
+
 Simple client side social authentication for [React](https://reactjs.org/) applications.
+
+# Version History/Changelog
+
+See our [changelog](https://github.com/smartprocure/react-social-auth/blob/master/CHANGELOG.md)
 
 # Installing
 `npm install react-social-auth`
 
-This package requires `lodash/fp`, and `babel-polyfill` so make sure that's available in your app.
-Follow this instructions to enable [babel-polyfill](https://babeljs.io/docs/usage/polyfill/).
+This package requires `lodash/fp`, so make sure that's available in your app.
 
 # Usage
 
@@ -41,8 +47,8 @@ let LinkedInButton = ({ onClick }) => (
   </Button>
 )
 
-let onSignIn = (authPayload) => {  
-  // Use the authentication payload to verify 
+let onSignIn = (authPayload) => {
+  // Use the authentication payload to verify
   // the identity of the request using server
   // side authentication procedures.
   console.log(authPayload)

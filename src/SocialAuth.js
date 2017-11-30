@@ -1,22 +1,21 @@
 import React from 'react'
-import { loadScript, hasRequiredSettings } from './util/common'
+import { hasRequiredSettings } from './util/common'
 import * as google from './util/google'
-import * as linkedin from './util/linkedin' 
+import * as linkedin from './util/linkedin'
 
-let providers = {google, linkedin}
+let providers = { google, linkedin }
 
 export default class SocialAuth extends React.Component {
-  
   constructor(props) {
     super(props)
     hasRequiredSettings(this.props)
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     providers[this.props.provider].onMount(this.props)
   }
 
-  async clickHandler() {
+  clickHandler() {
     providers[this.props.provider].onClick(this.props)
   }
 
