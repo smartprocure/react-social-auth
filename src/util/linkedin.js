@@ -6,9 +6,9 @@ let loadAuthorizationUrl = ({ appId, state, scope, redirectUri }) => {
   let current = encodeURIComponent(redirectUri)
   let base =
     'https://www.linkedin.com/oauth/v2/authorization?response_type=code&'
-  return `${base}client_id=${appId}&redirect_uri=${current}&state=${state}&scope=${encodeURIComponent(
-    scope
-  )}`
+  return `${base}client_id=${appId}&redirect_uri=${current}&state=${
+    state
+  }&scope=${encodeURIComponent(scope)}`
 }
 
 let resetUrl = () => {
@@ -50,10 +50,15 @@ let requestAuthenticationCode = ({ appId, scope, redirectUri }) => {
   let state = generateState({ length: 8 })
   localStorage.linkedInReactLogin = state
   localStorage.linkedInReactLoginRedirectUri = redirectUri
-  window.location.href = loadAuthorizationUrl({ appId, state, scope, redirectUri })
+  window.location.href = loadAuthorizationUrl({
+    appId,
+    state,
+    scope,
+    redirectUri,
+  })
 }
 
-let getAuthPayload = (appId) => {
+let getAuthPayload = appId => {
   let result = getAuthenticationCode()
   if (result) {
     let { authenticationCode, state, redirectUri } = result
@@ -69,13 +74,17 @@ let getAuthPayload = (appId) => {
   }
 }
 
-export let onMount = ({appId, onSuccess}) => {
+export let onMount = ({ appId, onSuccess }) => {
   let authPayload = getAuthPayload(appId)
   if (authPayload) {
     onSuccess(authPayload)
   }
-} 
+}
 
-export let onClick = ({ appId, scope = 'r_basicprofile r_emailaddress', redirectUri = window.location.href }) => {
+export let onClick = ({
+  appId,
+  scope = 'r_basicprofile r_emailaddress',
+  redirectUri = window.location.href,
+}) => {
   requestAuthenticationCode({ appId, scope, redirectUri })
 }

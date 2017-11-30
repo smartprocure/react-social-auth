@@ -1,6 +1,4 @@
 import React from 'react'
 import SocialAuth from './SocialAuth'
 
-export default (props) => {
-  return <SocialAuth {...props} provider='linkedin'/>
-}
+export default props => <SocialAuth {...props} provider="linkedin" />
