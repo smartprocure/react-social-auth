@@ -43,7 +43,12 @@ export let onMount = ({
 
 export let onClick = ({ appId, onSuccess }) => {
   let auth2 = window.gapi.auth2.getAuthInstance()
-  auth2.signIn().then(user => {
+  if (auth2.isSignedIn && auth2.isSignedIn.get()) {
+    let user = auth2.currentUser.get()
     onSuccess(getAuthPayload(appId, user))
-  })
+  } else {
+    auth2.signIn().then(user => {
+      onSuccess(getAuthPayload(appId, user))
+    })
+  }
 }
