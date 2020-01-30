@@ -1,4 +1,4 @@
-# 1.1.00 - January 29, 2020
+# 1.1.0 - January 29, 2020
 
 - Implemented support for SalesForce.
 - Upgraded to latest React.
