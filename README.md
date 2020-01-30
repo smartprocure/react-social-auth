@@ -17,7 +17,7 @@ This package requires `lodash/fp`, so make sure that's available in your app.
 
 Client Side Code:
 
-```
+```js
 import React from 'react';
 import {Button} from 'reactstrap'
 import Flex from './Flex'
@@ -66,10 +66,37 @@ export default () => (
       onSuccess={onSignIn}
       component={LinkedInButton}
     />
+    <SalesForceAuth
+      appId="[YOUR_SALESFORCE_APP_ID]"
+      redirectUri={window.location.href.split('?')[0]}
+      onSuccess={onSignIn}
+      component={SalesForceButton}
+    />
   </Flex>
 )
 ```
-Server side authentication procedures:
+# Server side authentication procedures:
 
 - [Google](https://developers.google.com/identity/sign-in/web/backend-auth)
 - [LinkedIn](https://developer.linkedin.com/docs/oauth2) (Step 2)
+- [SalesForce](https://help.salesforce.com/articleView?id=remoteaccess_oauth_web_server_flow.htm&type=5)
+
+## SalesForce server side code:
+
+```js
+import jsforce from 'jsforce'
+
+export let salesforce = async (app, { code, redirectUri }) => {
+  let { appId, clientSecret } = "[Object containing your API key and secret]"
+  let oauth2 = new jsforce.OAuth2({
+    loginUrl: 'https://login.salesforce.com',
+    clientId: appId,
+    clientSecret,
+    redirectUri,
+  })
+  let conn = new jsforce.Connection({ oauth2 })
+  await conn.authorize(code)
+  let { email } = await conn.chatter.resource('/users/me')
+  // More code to lookup user by email and other authentication steps.
+}
+```

@@ -1,6 +1,6 @@
 {
   "name": "react-social-auth",
-  "version": "1.0.45",
+  "version": "1.1.00",
   "description": "Simple client side social authentication for React applications.",
   "main": "lib/react-social-auth.js",
   "scripts": {
@@ -46,7 +46,7 @@
     "babel-preset-react": "^6.24.1",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
-    "duti": "^0.8.0",
+    "duti": ">=0.15.0",
     "eslint": "^4.10.0",
     "eslint-config-smartprocure": "^1.0.2",
     "mocha": "^4.0.1",
@@ -59,7 +59,7 @@
     "bluebird": "^3.5.1",
     "futil-js": "^1.36.0",
     "lodash": "^4.17.4",
-    "react": "^16.0.0",
+    "react": "^16.8.0",
     "simple-random": "^1.0.3"
   }
 }

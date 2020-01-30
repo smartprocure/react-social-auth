@@ -21,7 +21,6 @@ export default class SocialAuth extends React.Component {
   }
 
   render() {
-    console.log({ props: this.props })
     let { component: Component } = this.props
     return <Component onClick={this.clickHandler.bind(this)} />
   }
