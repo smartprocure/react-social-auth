@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import { loadScript, hasRequiredSettings } from './common'
+import { loadScript } from './common'
 import bluebird from 'bluebird'
 
 let getAuthPayload = (appId, user) => {
