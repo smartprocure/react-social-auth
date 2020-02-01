@@ -1,3 +1,8 @@
+# 1.1.2 - February 01, 2020
+
+- General cleanup and improvements.
+- Introducing continuous integration.
+
 # 1.1.1 - January 29, 2020
 
 - Forgot to build
