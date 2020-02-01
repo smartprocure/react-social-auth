@@ -9,6 +9,7 @@ Simple client side social authentication for [React](https://reactjs.org/) appli
 See our [changelog](https://github.com/smartprocure/react-social-auth/blob/master/CHANGELOG.md)
 
 # Installing
+
 `npm install react-social-auth`
 
 This package requires `lodash/fp`, so make sure that's available in your app.
@@ -18,36 +19,40 @@ This package requires `lodash/fp`, so make sure that's available in your app.
 Client Side Code:
 
 ```js
-import React from 'react';
-import {Button} from 'reactstrap'
+import React from 'react'
+import { Button } from 'reactstrap'
 import Flex from './Flex'
-import {GoogleAuth, LinkedInAuth} from "react-social-auth"
+import { GoogleAuth, LinkedInAuth } from 'react-social-auth'
 
 let GoogleButton = ({ onClick }) => (
-  <Button style={{width: 175}}
+  <Button
+    style={{ width: 175 }}
     className="cursor-pointer"
     color="primary"
-    onClick={onClick}>
+    onClick={onClick}
+  >
     <Flex>
-      <i className='fa fa-google-plus' />
+      <i className="fa fa-google-plus" />
       Log in with Google
     </Flex>
   </Button>
 )
 
 let LinkedInButton = ({ onClick }) => (
-  <Button style={{width: 175}}
+  <Button
+    style={{ width: 175 }}
     className="cursor-pointer"
     color="primary"
-    onClick={onClick}>
+    onClick={onClick}
+  >
     <Flex>
-      <i className='fa fa-linkedin-square' />
+      <i className="fa fa-linkedin-square" />
       Log in with LinkedIn
     </Flex>
   </Button>
 )
 
-let onSignIn = (authPayload) => {
+let onSignIn = authPayload => {
   // Use the authentication payload to verify
   // the identity of the request using server
   // side authentication procedures.
@@ -68,13 +73,13 @@ export default () => (
     />
     <SalesForceAuth
       appId="[YOUR_SALESFORCE_APP_ID]"
-      redirectUri={window.location.href.split('?')[0]}
       onSuccess={onSignIn}
       component={SalesForceButton}
     />
   </Flex>
 )
 ```
+
 # Server side authentication procedures:
 
 - [Google](https://developers.google.com/identity/sign-in/web/backend-auth)
@@ -87,7 +92,7 @@ export default () => (
 import jsforce from 'jsforce'
 
 export let salesforce = async (app, { code, redirectUri }) => {
-  let { appId, clientSecret } = "[Object containing your API key and secret]"
+  let { appId, clientSecret } = '[Object containing your API key and secret]'
   let oauth2 = new jsforce.OAuth2({
     loginUrl: 'https://login.salesforce.com',
     clientId: appId,
