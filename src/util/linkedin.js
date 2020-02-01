@@ -1,7 +1,7 @@
 import { getQueryParameter } from './common'
 import generateState from 'simple-random/browser'
 
-export let onMount = ({ appId, onSuccess }) => {
+export let init = ({ appId, onSuccess }) => {
   if (localStorage.linkedInLoginState) {
     let redirectUri = localStorage.linkedInReactLoginRedirectUri
     let code = getQueryParameter('code')

@@ -14,9 +14,10 @@ export let loadScript = (id, src) =>
   })
 
 let hasProperties = _.curry((properties, instance) =>
-  _.every(property => {
-    return _.has(property, instance) && !_.isNil(property, instance)
-  }, properties)
+  _.every(
+    property => _.has(property, instance) && !_.isNil(property, instance),
+    properties
+  )
 )
 
 export let hasRequiredSettings = instance => {

@@ -20,7 +20,7 @@ let getAuthPayload = (appId, user) => {
   }
 }
 
-export let onMount = ({
+export let init = ({
   appId,
   scope = 'profile email',
   fetchBasicProfile = true,

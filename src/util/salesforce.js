@@ -1,7 +1,7 @@
 import { getQueryParameter } from './common'
 import generateState from 'simple-random/browser'
 
-export let onMount = ({ onSuccess }) => {
+export let init = ({ onSuccess }) => {
   if (localStorage.salesforceLoginState) {
     let redirectUri = localStorage.salesforceReactLoginRedirectUri
     let code = getQueryParameter('code')
