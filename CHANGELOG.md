@@ -1,3 +1,7 @@
+# 1.1.1 - January 29, 2020
+
+- Forgot to build
+
 # 1.1.0 - January 29, 2020
 
 - Implemented support for SalesForce.
