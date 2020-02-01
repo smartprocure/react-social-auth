@@ -1,8 +1,8 @@
 import React from 'react'
-import { hasRequiredSettings } from './util/common'
-import * as google from './util/google'
-import * as linkedin from './util/linkedin'
-import * as salesforce from './util/salesforce'
+import { hasRequiredSettings } from './common'
+import * as google from './google'
+import * as linkedin from './linkedin'
+import * as salesforce from './salesforce'
 
 let providers = { google, linkedin, salesforce }
 
