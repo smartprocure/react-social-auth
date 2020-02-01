@@ -2,7 +2,7 @@ import _ from 'lodash/fp'
 import * as F from 'futil-js'
 
 export let loadScript = (id, src) =>
-  new Promise((resolve, reject) => {
+  new Promise(resolve => {
     if (typeof document !== 'undefined') {
       if (!document.getElementById(id)) {
         let siblingElement = _.head(document.getElementsByTagName('script'))
