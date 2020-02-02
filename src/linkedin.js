@@ -7,8 +7,11 @@ export let init = ({ appId, onSuccess }) => {
     let code = getQueryParameter('code')
     let state = getQueryParameter('state')
     window.history.replaceState(null, null, redirectUri)
-    if (state === localStorage.linkedInLoginState) {
+    if (code && state === localStorage.linkedInLoginState) {
       localStorage.linkedInLoginState = null
+      if (localStorage.rawHref) {
+        localStorage.rawHref = redirectUri
+      }
       onSuccess({
         type: 'linkedin',
         authResponse: {
