@@ -7,7 +7,7 @@
     "build": "webpack -d",
     "test": "babel-node ./node_modules/mocha/bin/_mocha",
     "fmt": "prettier --write *.js; prettier --write '{src,test}/**/*.js'",
-    "lint": "eslint --fix dangerfile.js src/*.js test/*.js",
+    "lint": "eslint dangerfile.js src/*.js test/*.js",
     "lint:ci": "npm run lint -- -o lint-results.json -f json",
     "lint:fix": "npm run lint -- --fix",
     "duti": "duti",
@@ -58,11 +58,11 @@
     "nyc": "^11.3.0",
     "prettier": "^1.7.4",
     "react": "^16.8.0",
-    "webpack": "^3.8.1"
+    "webpack": "^3.8.1",
+    "danger": "^9.2.10"
   },
   "dependencies": {
     "bluebird": "^3.5.1",
-    "danger": "^9.2.10",
     "futil-js": "^1.36.0",
     "lodash": "^4.17.4",
     "simple-random": "^1.0.3"
