@@ -1,3 +1,7 @@
+# 1.1.3 - February 03, 2020
+
+- Fix CI build step.
+
 # 1.1.2 - February 01, 2020
 
 - General cleanup and improvements.
