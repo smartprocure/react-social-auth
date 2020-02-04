@@ -1,5 +1,5 @@
 import _ from 'lodash/fp'
-import { loadScript, hasRequiredSettings } from './common'
+import { loadScript } from './common'
 import bluebird from 'bluebird'
 
 let getAuthPayload = (appId, user) => {
@@ -20,7 +20,7 @@ let getAuthPayload = (appId, user) => {
   }
 }
 
-export let onMount = ({
+export let init = ({
   appId,
   scope = 'profile email',
   fetchBasicProfile = true,
