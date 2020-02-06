@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { hasRequiredSettings } from './common'
 import * as google from './google'
 import * as linkedin from './linkedin'
@@ -9,8 +9,10 @@ let providers = { google, linkedin, salesforce }
 export let SocialAuth = props => {
   let { provider, component: Component } = props
   let { init, onClick } = providers[provider]
-  hasRequiredSettings(props)
-  init(props)
+  useEffect(() => {
+    hasRequiredSettings(props)
+    init(props)
+  }, [])
   return <Component onClick={() => onClick(props)} />
 }
 

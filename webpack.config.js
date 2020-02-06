@@ -22,5 +22,6 @@ module.exports = {
   },
   externals: {
     'lodash/fp': 'lodash/fp',
+    react: 'react',
   },
 }

@@ -1,3 +1,7 @@
+# 1.1.7 - February 06, 2020
+
+- Using React Hooks to initialize component.
+
 # 1.1.3 - February 03, 2020
 
 - Fix CI build step.
