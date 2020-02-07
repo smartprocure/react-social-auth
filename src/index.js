@@ -9,7 +9,7 @@ let providers = { google, linkedin, salesforce }
 export let SocialAuth = props => {
   let { provider, component: Component } = props
   let { init, onClick } = providers[provider]
-  // I don't believe the useEffect is necessary here.
+  // I don't believe the useEffect hook is necessary here.
   useEffect(() => {
     hasRequiredSettings(props)
     init(props)
