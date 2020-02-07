@@ -1,3 +1,7 @@
+# 1.1.8 - February 07, 2020
+
+- Use babel instead of webpack for the build step.
+
 # 1.1.7 - February 06, 2020
 
 - Using React Hooks to initialize component.
