@@ -33,11 +33,7 @@ export let hasRequiredSettings = instance => {
 
 export let getQueryParameter = name => {
   if (typeof window !== 'undefined') {
-    let search = window.location.search
-    if (!search && localStorage.rawHref && localStorage.rawHref.match(/\?./)) {
-      search = `?${localStorage.rawHref.split('?')[1]}`
-    }
-    const match = RegExp(`[?&]${name}=([^&]*)`).exec(search)
+    const match = RegExp(`[?&]${name}=([^&]*)`).exec(window.location.search)
     return match && decodeURIComponent(match[1].replace(/\+/g, ' '))
   }
 }

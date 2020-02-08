@@ -8,10 +8,7 @@ export let init = ({ onSuccess }) => {
     let state = getQueryParameter('state')
     window.history.replaceState(null, null, redirectUri)
     if (code && state === localStorage.salesforceLoginState) {
-      localStorage.salesforceLoginState = null
-      if (localStorage.rawHref) {
-        localStorage.rawHref = redirectUri
-      }
+      delete localStorage.salesforceLoginState
       onSuccess({
         type: 'salesforce',
         authResponse: {
