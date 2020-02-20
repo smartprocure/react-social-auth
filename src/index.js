@@ -10,11 +10,8 @@ let providers = { google, linkedin, salesforce, facebook }
 export let SocialAuth = props => {
   let { provider, component: Component } = props
   let { init, onClick } = providers[provider]
-  // I don't believe the useEffect hook is necessary here.
-  useEffect(() => {
-    hasRequiredSettings(props)
-    init(props)
-  }, [])
+  hasRequiredSettings(props)
+  init(props)
   return <Component onClick={() => onClick(props)} />
 }
 
