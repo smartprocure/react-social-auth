@@ -52,6 +52,20 @@ let LinkedInButton = ({ onClick }) => (
   </Button>
 )
 
+let FacebookButton = ({ onClick }) => (
+  <Button
+    style={{ width: 175 }}
+    className="cursor-pointer"
+    color="primary"
+    onClick={onClick}
+  >
+    <Flex>
+      <i className="fa fa-facebook-square" />
+      Log in with Facebook
+    </Flex>
+  </Button>
+)
+
 let onSignIn = authPayload => {
   // Use the authentication payload to verify
   // the identity of the request using server
@@ -75,6 +89,11 @@ export default () => (
       appId="[YOUR_SALESFORCE_APP_ID]"
       onSuccess={onSignIn}
       component={SalesForceButton}
+    />
+    <FacebookAuth
+      appId="[YOUR_FACEBOOK_APP_ID]"
+      onSuccess={onSignIn}
+      component={FacebookButton}
     />
   </Flex>
 )
