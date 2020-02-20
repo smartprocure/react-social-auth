@@ -52,6 +52,34 @@ let LinkedInButton = ({ onClick }) => (
   </Button>
 )
 
+let SalesForceButton = ({ onClick }) => (
+  <Button
+    style={{ width: 175 }}
+    className="cursor-pointer"
+    color="primary"
+    onClick={onClick}
+  >
+    <Flex>
+      <i className="fa fa-salesforce" />
+      Log in with SalesForce
+    </Flex>
+  </Button>
+)
+
+let FacebookButton = ({ onClick }) => (
+  <Button
+    style={{ width: 175 }}
+    className="cursor-pointer"
+    color="primary"
+    onClick={onClick}
+  >
+    <Flex>
+      <i className="fa fa-facebook-square" />
+      Log in with Facebook
+    </Flex>
+  </Button>
+)
+
 let onSignIn = authPayload => {
   // Use the authentication payload to verify
   // the identity of the request using server
@@ -76,6 +104,11 @@ export default () => (
       onSuccess={onSignIn}
       component={SalesForceButton}
     />
+    <FacebookAuth
+      appId="[YOUR_FACEBOOK_APP_ID]"
+      onSuccess={onSignIn}
+      component={FacebookButton}
+    />
   </Flex>
 )
 ```
@@ -85,6 +118,7 @@ export default () => (
 - [Google](https://developers.google.com/identity/sign-in/web/backend-auth)
 - [LinkedIn](https://developer.linkedin.com/docs/oauth2) (Step 2)
 - [SalesForce](https://help.salesforce.com/articleView?id=remoteaccess_oauth_web_server_flow.htm&type=5)
+- [Facebook](https://developers.facebook.com/docs/facebook-login/web/)
 
 ## SalesForce server side code:
 
