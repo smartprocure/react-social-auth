@@ -61,7 +61,7 @@
     "babel-loader": "^8.0.6",
     "chai": "^4.1.2",
     "coveralls": "^3.0.0",
-    "danger": "^9.2.10",
+    "danger": "^11.2.1",
     "duti": ">=0.15.0",
     "eslint": "^4.10.0",
     "eslint-config-smartprocure": "^1.0.2",
